@@ -37,7 +37,7 @@ class AdyenNotification < ActiveRecord::Base
   REFUNDED_REVERSED = "REFUNDED_REVERSED".freeze
 
   belongs_to :prev,
-    class_name: self,
+    class_name: 'AdyenNotification',
     foreign_key: :original_reference,
     primary_key: :psp_reference,
     inverse_of: :next
@@ -51,7 +51,7 @@ class AdyenNotification < ActiveRecord::Base
     inverse_of: :prev
 
   belongs_to :order,
-    class_name: Spree::Order,
+    class_name: 'Spree::Order',
     primary_key: :number,
     foreign_key: :merchant_reference
 
