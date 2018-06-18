@@ -45,7 +45,7 @@ class AdyenNotification < ActiveRecord::Base
   # Auth will have no original reference, all successive notifications with
   # reference the first auth notification
   has_many :next,
-    class_name: self,
+    class_name: 'AdyenNotification',
     foreign_key: :original_reference,
     primary_key: :psp_reference,
     inverse_of: :prev
