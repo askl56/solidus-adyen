@@ -2,7 +2,7 @@ module Spree
   module Adyen
     class RatepaySource < ::ActiveRecord::Base
       belongs_to :payment_method
-      belongs_to :user, class_name: user_class_name, foreign_key: "user_id"
+      belongs_to :user, class_name: 'Spree::User', foreign_key: "user_id"
       has_one :payment, class_name: "Spree::Payment", as: :source
       has_many :notifications,
         class_name: "AdyenNotification",
@@ -23,15 +23,6 @@ module Spree
       # @return [Bool] true if all DOB fields are set, false otherwise
       def has_dob?
         [dob_day, dob_month, dob_year].all?(&:present?)
-      end
-      
-      private
-      
-      # Returns user class as a string for association class name
-      #
-      # @return [String] The user class as a string.
-      def user_class_name
-        Spree.user_class.to_s
       end
     end
   end
