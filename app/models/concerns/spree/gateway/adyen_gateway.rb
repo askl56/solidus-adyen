@@ -68,7 +68,7 @@ module Spree
         response.success?,
         response.message,
         response.attributes,
-        authorization: original_reference || response.psp_reference
+        authorization: response.psp_reference || original_reference
       )
     end
 
